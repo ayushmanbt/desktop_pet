@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2dmhqdp04xea"]
+
+[ext_resource type="Script" uid="uid://vk7yklupiq8t" path="res://desktop.gd" id="1_my12u"]
+[ext_resource type="Script" uid="uid://mk2u4glvah7" path="res://player.gd" id="2_uh226"]
+[ext_resource type="Texture2D" uid="uid://bk3swgotrocf2" path="res://assets/slime spritesheet calciumtrice.png" id="2_x0l4i"]
+
+[sub_resource type="Animation" id="Animation_qcmjx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_uh226"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ed6rk"]
+_data = {
+&"RESET": SubResource("Animation_qcmjx"),
+&"idle": SubResource("Animation_uh226")
+}
+
+[node name="Desktop" type="Node2D"]
+script = ExtResource("1_my12u")
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("2_uh226")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+position = Vector2(1105, 600)
+scale = Vector2(3, 3)
+texture = ExtResource("2_x0l4i")
+hframes = 10
+vframes = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_ed6rk")
+}
+autoplay = "idle"
