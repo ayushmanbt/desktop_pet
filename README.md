@@ -14,7 +14,7 @@ P.S: Please press escape to quit the game!
 
 ## Todos
 
--[ ] Make the screen not cover taskbar (This might be a linux only issue idk
--[ ] Should I hookup AI with it or not
--[ ] Add customization
--[ ] IDK fun?!
+- [ ] Make the screen not cover taskbar (This might be a linux only issue idk
+- [ ] Should I hookup AI with it or not
+- [ ] Add customization
+- [ ] IDK fun?!
